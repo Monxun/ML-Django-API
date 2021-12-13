@@ -1,12 +1,14 @@
 # file backend/server/apps/ml/income_classifier/random_forest.py
-
+import os
 import joblib
 import pandas as pd
+
+from config.settings import BASE_DIR
 
 
 class RandomForestClassifier:
     def __init__(self):
-        path_to_artifacts = '../../research/'
+        path_to_artifacts = os.path.join(BASE_DIR, 'research/')
         self.values_fill_missing = joblib.load(path_to_artifacts + 'train_mode.joblib')
         self.encoders = joblib.load(path_to_artifacts + 'encoders.joblib')
         self.model = joblib.load(path_to_artifacts + 'random_forest.joblib')
